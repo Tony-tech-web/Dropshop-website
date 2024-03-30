@@ -27,3 +27,9 @@ function toggleMenu() {
     var menu = document.getElementById("menu");
     menu.style.display === "block" ? menu.style.display = "none" : menu.style.display = "block";
 }
+function toggleMenu() {
+    var menu = document.getElementById("menu");
+    var menuToggle = document.querySelector(".menu-toggle");
+    menu.style.display === "block" ? menu.style.display = "none" : menu.style.display = "block";
+    menuToggle.classList.toggle("open");
+}
