@@ -11,8 +11,8 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     closeBtn.addEventListener('click', function () {
-        sidebar.style.width = '50px';
-        content.style.marginLeft = '50px';
+        sidebar.style.width = '0px';
+        content.style.marginLeft = '0px';
         document.cookie = "sidebarOpen=false";
     });
 
@@ -23,3 +23,7 @@ document.addEventListener('DOMContentLoaded', function () {
         content.style.marginLeft = '250px';
     }
 });
+function toggleMenu() {
+    var menu = document.getElementById("menu");
+    menu.style.display === "block" ? menu.style.display = "none" : menu.style.display = "block";
+}
