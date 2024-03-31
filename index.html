@@ -59,6 +59,42 @@
         <!-- Other content goes here -->
     </div>
 
-    <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const openBtn = document.getElementById('open-btn');
+            const closeBtn = document.getElementById('close-btn');
+            const sidebar = document.getElementById('sidebar');
+            const content = document.getElementById('content');
+
+            openBtn.addEventListener('click', function () {
+                sidebar.style.left = '0';
+                content.style.marginLeft = '250px';
+            });
+
+            closeBtn.addEventListener('click', function () {
+                sidebar.style.left = '-250px';
+                content.style.marginLeft = '0';
+            });
+
+            // Check if sidebar was previously open
+            const sidebarOpen = document.cookie.split(';').some((item) => item.trim().startsWith('sidebarOpen=true'));
+            if (sidebarOpen) {
+                sidebar.style.left = '0';
+                content.style.marginLeft = '250px';
+            } else {
+                sidebar.style.left = '-250px';
+                content.style.marginLeft = '0';
+            }
+
+            // Close sidebar when clicking outside the sidebar area
+            window.addEventListener('click', function (event) {
+                if (event.target !== sidebar && !sidebar.contains(event.target) && event.target !== openBtn) {
+                    sidebar.style.left = '-250px';
+                    content.style.marginLeft = '0';
+                    document.cookie = "sidebarOpen=false";
+                }
+            });
+        });
+    </script>
 </body>
 </html>

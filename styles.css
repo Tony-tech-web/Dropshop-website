@@ -60,23 +60,10 @@ body {
     left: -250px; /* Initially hide the sidebar */
     background-color: #333;
     overflow-x: hidden;
-    transition: left 0.5s; /* Smooth transition for sidebar */
+    transition: left 0.7s ease; /* Smooth transition for sidebar with ease timing function */
     padding-top: 60px;
     border-right: 1px solid #555;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.2); /* Add box shadow */
-}
-
-.sidebar-content {
-    padding: 20px;
-}
-
-.sidebar ul {
-    list-style-type: none;
-    padding: 0;
-}
-
-.sidebar ul li {
-    margin-bottom: 10px;
 }
 
 .sidebar ul li a {
@@ -89,12 +76,6 @@ body {
 
 .sidebar ul li a:hover {
     color: #ddd;
-}
-
-.sidebar-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
 }
 
 .close-btn {
