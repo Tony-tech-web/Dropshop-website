@@ -1,35 +1,41 @@
 document.addEventListener('DOMContentLoaded', function () {
-    const openBtn = document.getElementById('open-btn');
-    const closeBtn = document.getElementById('close-btn');
     const sidebar = document.getElementById('sidebar');
     const content = document.getElementById('content');
-
-    openBtn.addEventListener('click', function () {
-        sidebar.style.width = '250px';
-        content.style.marginLeft = '250px';
-        document.cookie = "sidebarOpen=true";
-    });
-
-    closeBtn.addEventListener('click', function () {
-        sidebar.style.width = '0px';
-        content.style.marginLeft = '0px';
-        document.cookie = "sidebarOpen=false";
-    });
 
     // Check if sidebar was previously open
     const sidebarOpen = document.cookie.split(';').some((item) => item.trim().startsWith('sidebarOpen=true'));
     if (sidebarOpen) {
         sidebar.style.width = '250px';
         content.style.marginLeft = '250px';
+    } else {
+        sidebar.style.width = '0px';
+        content.style.marginLeft = '0px';
     }
+
+    // Close sidebar when clicking outside the sidebar area
+    window.addEventListener('click', function (event) {
+        if (event.target !== sidebar && !sidebar.contains(event.target)) {
+            sidebar.style.width = '0px';
+            content.style.marginLeft = '0px';
+            document.cookie = "sidebarOpen=false";
+        }
+    });
 });
+
+// Function to toggle menu and change its visibility
 function toggleMenu() {
-    var menu = document.getElementById("menu");
-    menu.style.display === "block" ? menu.style.display = "none" : menu.style.display = "block";
-}
-function toggleMenu() {
-    var menu = document.getElementById("menu");
-    var menuToggle = document.querySelector(".menu-toggle");
-    menu.style.display === "block" ? menu.style.display = "none" : menu.style.display = "block";
-    menuToggle.classList.toggle("open");
+    const sidebar = document.getElementById('sidebar');
+    const content = document.getElementById('content');
+    const sidebarWidth = sidebar.style.width;
+
+    // Toggle sidebar visibility and adjust content margin accordingly
+    if (sidebarWidth === '0px' || !sidebarWidth) {
+        sidebar.style.width = '250px';
+        content.style.marginLeft = '250px';
+        document.cookie = "sidebarOpen=true";
+    } else {
+        sidebar.style.width = '0px';
+        content.style.marginLeft = '0px';
+        document.cookie = "sidebarOpen=false";
+    }
 }

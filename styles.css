@@ -1,14 +1,16 @@
 /* Global styles */
 body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
     padding: 0;
-    font-family: Arial, sans-serif;
+    background-color: #f8f8f8;
+    color: #333;
 }
 
 .container {
     max-width: 1200px;
-    margin: 20px auto;
-    padding: 0 20px;
+    margin: 0 auto;
+    padding: 20px;
 }
 
 /* Page-specific styles */
@@ -18,12 +20,18 @@ body {
 }
 
 .product {
-    flex: 1 0 15%; /* Adjust as needed */
+    flex: 1 0 15%;
     margin: 10px;
     padding: 20px;
     background-color: #fff;
     border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.product:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
 }
 
 .product img {
@@ -34,28 +42,31 @@ body {
 
 .product h2 {
     margin-bottom: 10px;
+    color: #333;
 }
 
 .product p {
     color: #666;
+    line-height: 1.6;
 }
 
 /* Sidebar styles */
 .sidebar {
+    width: 250px;
     height: 100%;
-    width: 0;
     position: fixed;
     z-index: 1;
     top: 0;
-    left: 0;
+    left: -250px; /* Initially hide the sidebar */
     background-color: #333;
     overflow-x: hidden;
-    transition: 0.5s;
+    transition: left 0.5s; /* Smooth transition for sidebar */
     padding-top: 60px;
+    border-right: 1px solid #555;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2); /* Add box shadow */
 }
 
-.sidebar .sidebar-content {
-    width: 250px;
+.sidebar-content {
     padding: 20px;
 }
 
@@ -73,19 +84,20 @@ body {
     color: #fff;
     display: block;
     padding: 8px 0;
+    transition: color 0.3s;
 }
 
 .sidebar ul li a:hover {
-    background-color: #666;
+    color: #ddd;
 }
 
-.sidebar .sidebar-header {
+.sidebar-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-.sidebar .close-btn {
+.close-btn {
     cursor: pointer;
     background: none;
     border: none;
@@ -97,15 +109,18 @@ body {
 .content {
     transition: margin-left 0.5s;
     padding: 20px;
+    border-radius: 8px; /* Add border radius */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add box shadow */
 }
 
 header {
     background-color: #333;
     color: #fff;
     padding: 10px;
+    border-radius: 0 0 8px 8px;
 }
 
-header .open-btn {
+.open-btn {
     background: none;
     border: none;
     color: #fff;
@@ -113,75 +128,6 @@ header .open-btn {
     font-size: 1.5rem;
 }
 
-header .open-btn:hover {
+.open-btn:hover {
     text-decoration: underline;
-}
-
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-}
-
-.navbar {
-    background-color: #007bff;
-    color: #fff;
-    padding: 10px;
-    display: flex;
-    justify-content: space-between;
-}
-
-.menu-toggle {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    width: 30px;
-    height: 20px;
-    cursor: pointer;
-}
-
-.menu-toggle span {
-    background-color: #fff;
-    height: 3px;
-    width: 100%;
-    display: block;
-    border-radius: 5px;
-    transition: all 0.3s ease-in-out;
-}
-
-.open span:nth-child(1) {
-    transform: translateY(6px) rotate(45deg);
-}
-
-.open span:nth-child(2) {
-    opacity: 0;
-}
-
-.open span:nth-child(3) {
-    transform: translateY(-6px) rotate(-45deg);
-}
-
-.menu-items {
-    list-style: none;
-    display: flex;
-    margin: 0;
-    padding: 0;
-}
-
-.menu-items li {
-    margin-right: 20px;
-}
-
-.menu-items li a {
-    color: #fff;
-    text-decoration: none;
-}
-
-.container {
-    max-width: 800px;
-    margin: 20px auto;
-    padding: 20px;
-    border-radius: 10px;
-    background-color: #fff;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
